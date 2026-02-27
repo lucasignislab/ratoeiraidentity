@@ -13,12 +13,22 @@ import { FormsModule } from '@angular/forms';
 export class MfaComponent implements AfterViewInit {
   @ViewChildren('digitInput') inputs!: QueryList<ElementRef>;
   code: string[] = ['', '', '', '', '', ''];
+  showSuccessAlert = true;
 
   ngAfterViewInit() {
     // Auto focus first input on load
     setTimeout(() => {
       this.inputs.first.nativeElement.focus();
     }, 100);
+
+    // Auto-hide success alert after 5 seconds
+    setTimeout(() => {
+      this.dismissAlert();
+    }, 5000);
+  }
+
+  dismissAlert() {
+    this.showSuccessAlert = false;
   }
 
   onInput(event: Event, index: number) {

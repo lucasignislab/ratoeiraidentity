@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { AccountSelectionComponent } from './account-selection/account-selection.component';
 import { SsoEmailComponent } from './sso-email/sso-email.component';
 import { MfaComponent } from './mfa/mfa.component';
+import { UserNotRegisteredComponent } from './user-not-registered/user-not-registered.component';
 
 export const routes: Routes = [
     {
@@ -14,7 +15,8 @@ export const routes: Routes = [
             { path: 'login', component: LoginComponent },
             { path: 'accounts', component: AccountSelectionComponent },
             { path: 'sso', component: SsoEmailComponent },
-            { path: 'mfa', component: MfaComponent }
+            { path: 'mfa', component: MfaComponent },
+            { path: 'user-not-registered', component: UserNotRegisteredComponent }
         ]
     },
     { path: '**', redirectTo: '' }

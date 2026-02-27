@@ -11,8 +11,17 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   isPasswordVisible = false;
+  showInvalidCredentialsError = false; // Set to true for demonstration if needed
 
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
+  showError() {
+    this.showInvalidCredentialsError = true;
+  }
+
+  dismissError() {
+    this.showInvalidCredentialsError = false;
   }
 }
