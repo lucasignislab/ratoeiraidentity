@@ -13,13 +13,10 @@
     <div class="r-input-group">
         <label>Código de 6 dígitos</label>
 
-        <div class="code-inputs">
-            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
-            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
-            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
-            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
-            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
-            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
+        <div class="code-inputs" (paste)="onPaste($event)">
+            <input *ngFor="let digit of code; let i = index; trackBy: trackByIndex" #digitInput type="text"
+                class="code-digit" maxlength="1" inputmode="numeric" pattern="[0-9]*" [value]="code[i]"
+                (input)="onInput($event, i)" (keydown)="onKeyDown($event, i)" />
         </div>
     </div>
 
