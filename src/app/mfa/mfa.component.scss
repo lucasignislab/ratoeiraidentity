@@ -110,7 +110,7 @@
         font-size: var(--font-size-xl);
         font-weight: 600;
         color: var(--color-text-main);
-        background-color: #F8FAFC;
+        background-color: var(--color-bg-input);
         border: 1px dashed var(--color-border-hover);
         border-radius: var(--radius-md);
         transition: all var(--transition-fast);
@@ -125,7 +125,7 @@
         &:focus {
             background-color: var(--color-bg-card);
             border: 1px solid var(--color-primary);
-            box-shadow: 0 0 0 2px rgba(0, 59, 92, 0.2);
+            box-shadow: 0 0 0 2px var(--color-primary-ring);
         }
 
         &:not(:placeholder-shown) {

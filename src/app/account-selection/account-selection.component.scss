@@ -99,7 +99,7 @@
     }
 
     .badge-status {
-        background-color: #E5E7EB;
+        background-color: var(--color-badge-bg);
         color: var(--color-text-muted);
         font-size: var(--font-size-xs);
         padding: var(--spacing-1) var(--spacing-2);
@@ -108,8 +108,8 @@
         transition: all var(--transition-fast);
 
         &.active {
-            background-color: #DCFCE7;
-            color: #166534;
+            background-color: var(--color-badge-success-bg);
+            color: var(--color-badge-success-text);
         }
     }
 
@@ -137,7 +137,7 @@
     &:hover,
     &:focus-visible {
         border-color: var(--color-primary);
-        background-color: #F8FAFC;
+        background-color: var(--color-bg-input);
         color: var(--color-primary);
     }
 

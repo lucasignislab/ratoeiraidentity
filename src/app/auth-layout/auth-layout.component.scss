@@ -92,7 +92,7 @@
             }
 
             &.active {
-                background-color: #F0F9FF;
+                background-color: var(--color-primary-lightest);
                 color: var(--color-primary);
                 font-weight: 500;
             }
@@ -206,4 +206,17 @@
 .copyright {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
+}
+
+.ds-link {
+    display: inline-block;
+    margin-top: var(--spacing-3);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover {
+        color: var(--color-primary);
+    }
 }

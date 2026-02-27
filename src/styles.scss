@@ -1,11 +1,29 @@
 /* Global CSS variables for Ratoeira Identity (Fort Knox Minimalist) */
 :root {
-    /* Colors */
-    --color-primary: #003B5C;
-    /* Deep blue from screenshot button */
-    --color-primary-hover: #022A3D;
-    --color-accent: #F59E0B;
-    /* Amber from logo */
+    /* Primary Scale (Deep Blue) — 500 is the base */
+    --color-primary-100: #E6F0F7;
+    --color-primary-200: #BDD6E6;
+    --color-primary-300: #80B0CC;
+    --color-primary-400: #3D7EA6;
+    --color-primary-500: #003B5C;
+    --color-primary-600: #003250;
+    --color-primary-700: #002841;
+    --color-primary-800: #001E30;
+    --color-primary-900: #001520;
+    --color-primary: var(--color-primary-500);
+    --color-primary-hover: var(--color-primary-700);
+
+    /* Accent Scale (Amber) — 500 is the base */
+    --color-accent-100: #FEF3C7;
+    --color-accent-200: #FDE68A;
+    --color-accent-300: #FCD34D;
+    --color-accent-400: #FBBF24;
+    --color-accent-500: #F59E0B;
+    --color-accent-600: #D97706;
+    --color-accent-700: #B45309;
+    --color-accent-800: #92400E;
+    --color-accent-900: #78350F;
+    --color-accent: var(--color-accent-500);
     --color-bg-body: #F9FAFB;
     /* Clean off-white background */
     --color-bg-card: #FFFFFF;
@@ -25,6 +43,15 @@
     --color-border: #E5E7EB;
     --color-border-hover: #9CA3AF;
     --color-border-focus: var(--color-primary);
+
+    /* Auxiliary Colors */
+    --color-bg-input: #F8FAFC;
+    --color-bg-hover: #F3F4F6;
+    --color-primary-lightest: #F0F9FF;
+    --color-primary-ring: rgba(0, 59, 92, 0.25);
+    --color-badge-bg: #E5E7EB;
+    --color-badge-success-bg: #DCFCE7;
+    --color-badge-success-text: #166534;
 
     /* Typography */
     --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

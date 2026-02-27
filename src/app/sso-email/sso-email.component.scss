@@ -95,7 +95,7 @@
     }
 
     input:focus-visible~.checkmark {
-        box-shadow: 0 0 0 2px rgba(0, 59, 92, 0.3);
+        box-shadow: 0 0 0 2px var(--color-primary-ring);
     }
 
     .label-text {

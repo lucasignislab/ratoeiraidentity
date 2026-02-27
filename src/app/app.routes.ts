@@ -5,6 +5,7 @@ import { AccountSelectionComponent } from './account-selection/account-selection
 import { SsoEmailComponent } from './sso-email/sso-email.component';
 import { MfaComponent } from './mfa/mfa.component';
 import { UserNotRegisteredComponent } from './user-not-registered/user-not-registered.component';
+import { DesignSystemComponent } from './design-system/design-system.component';
 
 export const routes: Routes = [
     {
@@ -19,5 +20,6 @@ export const routes: Routes = [
             { path: 'user-not-registered', component: UserNotRegisteredComponent }
         ]
     },
+    { path: 'design-system', component: DesignSystemComponent },
     { path: '**', redirectTo: '' }
 ];

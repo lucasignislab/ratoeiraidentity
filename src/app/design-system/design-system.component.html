@@ -1,0 +1,328 @@
+<div class="ds-page">
+    <header class="ds-header">
+        <h1 class="ds-title">🎨 Ratoeira Identity</h1>
+        <p class="ds-subtitle">Design system</p>
+    </header>
+
+    <!-- ═══════════════ COLORS ═══════════════ -->
+    <section class="ds-section">
+        <h2 class="ds-section-title">Colors</h2>
+
+        <!-- Primary Scale -->
+        <h3 class="ds-subsection-title">Primary (Deep Blue)</h3>
+        <div class="color-scale-strip">
+            <div class="scale-swatch" *ngFor="let c of primaryScale" [style.background-color]="c.value"
+                [class.dark-text]="c.weight === '100' || c.weight === '200' || c.weight === '300'">
+                <span class="scale-weight">{{ c.weight }}</span>
+                <span class="scale-hex">{{ c.value }}</span>
+            </div>
+        </div>
+
+        <!-- Accent Scale -->
+        <h3 class="ds-subsection-title">Accent (Amber)</h3>
+        <div class="color-scale-strip">
+            <div class="scale-swatch" *ngFor="let c of accentScale" [style.background-color]="c.value"
+                [class.dark-text]="c.weight === '100' || c.weight === '200' || c.weight === '300' || c.weight === '400'">
+                <span class="scale-weight">{{ c.weight }}</span>
+                <span class="scale-hex">{{ c.value }}</span>
+            </div>
+        </div>
+
+        <!-- Backgrounds -->
+        <h3 class="ds-subsection-title">Backgrounds</h3>
+        <div class="color-grid">
+            <div class="color-card" *ngFor="let c of bgColors">
+                <div class="color-swatch bordered" [style.background-color]="c.value"></div>
+                <div class="color-info">
+                    <span class="color-label">{{ c.label }}</span>
+                    <code class="color-token">{{ c.token }}</code>
+                    <code class="color-value">{{ c.value }}</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text -->
+        <h3 class="ds-subsection-title">Text</h3>
+        <div class="color-grid">
+            <div class="color-card" *ngFor="let c of textColors">
+                <div class="color-swatch" [style.background-color]="c.value"></div>
+                <div class="color-info">
+                    <span class="color-label">{{ c.label }}</span>
+                    <code class="color-token">{{ c.token }}</code>
+                    <code class="color-value">{{ c.value }}</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semantic -->
+        <h3 class="ds-subsection-title">Semantic (Feedback)</h3>
+        <div class="color-grid">
+            <div class="color-card" *ngFor="let c of semanticColors">
+                <div class="color-swatch" [style.background-color]="c.value"></div>
+                <div class="color-info">
+                    <span class="color-label">{{ c.label }}</span>
+                    <code class="color-token">{{ c.token }}</code>
+                    <code class="color-value">{{ c.value }}</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Borders -->
+        <h3 class="ds-subsection-title">Borders</h3>
+        <div class="color-grid">
+            <div class="color-card" *ngFor="let c of borderColors">
+                <div class="color-swatch bordered" [style.background-color]="c.value"></div>
+                <div class="color-info">
+                    <span class="color-label">{{ c.label }}</span>
+                    <code class="color-token">{{ c.token }}</code>
+                    <code class="color-value">{{ c.value }}</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges -->
+        <h3 class="ds-subsection-title">Badges</h3>
+        <div class="color-grid">
+            <div class="color-card" *ngFor="let c of badgeColors">
+                <div class="color-swatch bordered" [style.background-color]="c.value"></div>
+                <div class="color-info">
+                    <span class="color-label">{{ c.label }}</span>
+                    <code class="color-token">{{ c.token }}</code>
+                    <code class="color-value">{{ c.value }}</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TYPOGRAPHY ═══════════════ -->
+    <section class="ds-section">
+        <h2 class="ds-section-title">Typography</h2>
+
+        <div class="font-stack-box">
+            <code>--font-family-sans</code>
+            <p class="font-stack-preview">-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+                sans-serif</p>
+        </div>
+
+        <h3 class="ds-subsection-title">Scale</h3>
+        <div class="type-scale">
+            <div class="type-row" *ngFor="let f of fontSizes">
+                <div class="type-meta">
+                    <code>{{ f.token }}</code>
+                    <span class="type-size">{{ f.value }} ({{ f.px }})</span>
+                </div>
+                <p class="type-sample" [style.font-size]="f.value">{{ f.label }} — The quick brown fox jumps over the
+                    lazy dog.
+                </p>
+            </div>
+        </div>
+
+        <h3 class="ds-subsection-title">Weights</h3>
+        <div class="weight-samples">
+            <p style="font-weight: 400"><span class="weight-label">400 Regular</span> — The quick brown fox jumps over
+                the lazy dog.</p>
+            <p style="font-weight: 500"><span class="weight-label">500 Medium</span> — The quick brown fox jumps over
+                the lazy dog.</p>
+            <p style="font-weight: 600"><span class="weight-label">600 Semi-bold</span> — The quick brown fox jumps over
+                the lazy dog.</p>
+            <p style="font-weight: 700"><span class="weight-label">700 Bold</span> — The quick brown fox jumps over the
+                lazy dog.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════ SPACING ═══════════════ -->
+    <section class="ds-section">
+        <h2 class="ds-section-title">Spacing</h2>
+        <div class="spacing-list">
+            <div class="spacing-row" *ngFor="let s of spacingTokens">
+                <code class="spacing-token">{{ s.token }}</code>
+                <div class="spacing-bar" [style.width]="s.value"></div>
+                <span class="spacing-value">{{ s.value }} ({{ s.px }})</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ RADII ═══════════════ -->
+    <section class="ds-section">
+        <h2 class="ds-section-title">Border Radius</h2>
+        <div class="radii-grid">
+            <div class="radius-demo">
+                <div class="radius-box" style="border-radius: var(--radius-sm)"></div>
+                <code>--radius-sm</code>
+                <span>0.375rem (6px)</span>
+            </div>
+            <div class="radius-demo">
+                <div class="radius-box" style="border-radius: var(--radius-md)"></div>
+                <code>--radius-md</code>
+                <span>2rem (32px) — Pill</span>
+            </div>
+            <div class="radius-demo">
+                <div class="radius-box" style="border-radius: var(--radius-lg)"></div>
+                <code>--radius-lg</code>
+                <span>1.25rem (20px)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ SHADOWS ═══════════════ -->
+    <section class="ds-section">
+        <h2 class="ds-section-title">Shadows</h2>
+        <div class="shadow-grid">
+            <div class="shadow-demo" style="box-shadow: var(--shadow-sm)">
+                <code>--shadow-sm</code>
+            </div>
+            <div class="shadow-demo" style="box-shadow: var(--shadow-md)">
+                <code>--shadow-md</code>
+            </div>
+            <div class="shadow-demo" style="box-shadow: var(--shadow-lg)">
+                <code>--shadow-lg</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ COMPONENTS ═══════════════ -->
+    <section class="ds-section">
+        <h2 class="ds-section-title">Components</h2>
+
+        <!-- Buttons -->
+        <h3 class="ds-subsection-title">Buttons</h3>
+        <div class="component-row">
+            <div class="component-demo">
+                <button class="r-btn r-btn-primary">Primary Button</button>
+                <code>.r-btn .r-btn-primary</code>
+            </div>
+            <div class="component-demo">
+                <button class="r-btn r-btn-outline">Outline Button</button>
+                <code>.r-btn .r-btn-outline</code>
+            </div>
+            <div class="component-demo">
+                <button class="r-btn r-btn-primary" disabled>Disabled</button>
+                <code>:disabled</code>
+            </div>
+        </div>
+
+        <!-- Inputs -->
+        <h3 class="ds-subsection-title">Inputs</h3>
+        <div class="component-column">
+            <div class="r-input-group">
+                <label>Email</label>
+                <input class="r-input" type="email" placeholder="your@email.com" />
+            </div>
+            <div class="r-input-group">
+                <label>Password</label>
+                <div class="password-wrapper">
+                    <input class="r-input" [type]="showPassword ? 'text' : 'password'" placeholder="••••••••" />
+                    <button class="view-pwd-btn" (click)="showPassword = !showPassword">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path *ngIf="!showPassword" stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                            <path *ngIf="!showPassword" stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path *ngIf="showPassword" stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <code>.r-input-group + input.r-input + .password-wrapper</code>
+        </div>
+
+        <!-- Alerts -->
+        <h3 class="ds-subsection-title">Alerts</h3>
+        <div class="component-column">
+            <div class="error-alert">
+                <span class="error-message">Invalid credentials. Please try again.</span>
+                <button class="close-alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="success-alert">
+                <span class="success-message">Code sent successfully!</span>
+                <button class="close-alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <code>.error-alert / .success-alert</code>
+        </div>
+
+        <!-- Divider -->
+        <h3 class="ds-subsection-title">Divider</h3>
+        <div class="component-column">
+            <div class="divider"><span>or</span></div>
+            <code>.divider</code>
+        </div>
+
+        <!-- Checkbox -->
+        <h3 class="ds-subsection-title">Checkbox</h3>
+        <div class="component-column">
+            <label class="custom-checkbox" (click)="checkboxChecked = !checkboxChecked">
+                <input type="checkbox" [checked]="checkboxChecked" />
+                <span class="checkmark" [class.checked-state]="checkboxChecked">
+                    <span class="check-icon" *ngIf="checkboxChecked"></span>
+                </span>
+                <span class="label-text">Keep me signed in on this device</span>
+            </label>
+            <code>.custom-checkbox</code>
+        </div>
+
+        <!-- MFA Code Inputs -->
+        <h3 class="ds-subsection-title">MFA Code Inputs</h3>
+        <div class="component-column">
+            <div class="code-inputs">
+                <input class="code-digit" *ngFor="let v of codeValues; let i = index" [value]="v" maxlength="1"
+                    placeholder="·" />
+            </div>
+            <code>.code-inputs .code-digit</code>
+        </div>
+
+        <!-- Badges -->
+        <h3 class="ds-subsection-title">Status Badges</h3>
+        <div class="component-row">
+            <div class="component-demo">
+                <span class="badge-status">Inactive</span>
+                <code>.badge-status</code>
+            </div>
+            <div class="component-demo">
+                <span class="badge-status active">Active</span>
+                <code>.badge-status.active</code>
+            </div>
+        </div>
+
+        <!-- Card -->
+        <h3 class="ds-subsection-title">Card</h3>
+        <div class="card-demo-wrapper">
+            <div class="r-card">
+                <p style="text-align: center; color: var(--color-text-muted)">Content within .r-card</p>
+            </div>
+            <code>.r-card — max-width: 440px, radius-lg, shadow-lg</code>
+        </div>
+    </section>
+
+    <!-- ═══════════════ ANIMATIONS ═══════════════ -->
+    <section class="ds-section">
+        <h2 class="ds-section-title">Animations</h2>
+        <div class="animation-grid">
+            <div class="animation-demo">
+                <div class="anim-box anim-slide-up">slideUp</div>
+                <code>0.6s cubic-bezier(0.16, 1, 0.3, 1)</code>
+            </div>
+            <div class="animation-demo">
+                <div class="anim-box anim-slide-down">slideDown</div>
+                <code>0.2s ease-out</code>
+            </div>
+            <div class="animation-demo">
+                <div class="anim-box anim-fade-in">fadeIn</div>
+                <code>0.3s ease-out</code>
+            </div>
+        </div>
+        <p class="ds-note">Hover over the boxes to see the animation.</p>
+    </section>
+</div>
