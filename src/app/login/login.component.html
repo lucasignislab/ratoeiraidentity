@@ -1,0 +1,42 @@
+<div class="view-header">
+    <h1 class="view-title">Acesse sua conta</h1>
+    <p class="view-subtitle">Entre com seu e-mail e senha do Ratoeira Ads</p>
+</div>
+
+<form class="login-form">
+    <div class="r-input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" class="r-input" placeholder="seu@email.com" autocomplete="email" />
+    </div>
+
+    <div class="r-input-group">
+        <label for="password">Senha</label>
+        <div class="password-wrapper">
+            <input type="password" id="password" class="r-input" placeholder="••••••••"
+                autocomplete="current-password" />
+            <button type="button" class="view-pwd-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                    <path fill-rule="evenodd"
+                        d="M.664 10.59a1.651 1.651 0 0 1 0-1.186A10.004 10.004 0 0 1 10 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0 1 10 17c-4.257 0-7.893-2.66-9.336-6.41ZM14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <button type="submit" class="r-btn r-btn-primary enter-btn" routerLink="../accounts">
+        Entrar
+    </button>
+</form>
+
+<div class="divider">
+    <span>ou</span>
+</div>
+
+<div class="sso-section">
+    <button type="button" class="r-btn r-btn-outline" routerLink="../sso">
+        Entrar com acesso único
+    </button>
+    <p class="sso-help">Use um só login em todos os produtos (apenas MFA, sem senha).</p>
+</div>

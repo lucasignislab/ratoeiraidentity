@@ -1,0 +1,29 @@
+<div class="view-header">
+    <button class="back-btn" routerLink="../sso">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+    </button>
+    <h1 class="view-title">Código de verificação</h1>
+    <p class="view-subtitle">Digite o código do seu aplicativo autenticador</p>
+</div>
+
+<form class="mfa-form">
+    <div class="r-input-group">
+        <label>Código de 6 dígitos</label>
+
+        <div class="code-inputs">
+            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
+            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
+            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
+            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
+            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
+            <input type="text" maxlength="1" class="code-digit" autocomplete="off" />
+        </div>
+    </div>
+
+    <button type="button" class="r-btn r-btn-primary enter-btn" routerLink="../accounts">
+        Verificar
+    </button>
+</form>

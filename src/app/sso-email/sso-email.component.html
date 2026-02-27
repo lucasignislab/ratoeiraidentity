@@ -1,0 +1,30 @@
+<div class="view-header">
+    <button class="back-btn" routerLink="../login">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+    </button>
+    <h1 class="view-title">Entrar com acesso único</h1>
+    <p class="view-subtitle">Digite seu e-mail.</p>
+</div>
+
+<form class="sso-email-form">
+    <div class="r-input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" class="r-input" placeholder="lucas.coelho@ratoeiraads.com"
+            autocomplete="email" />
+    </div>
+
+    <div class="checkbox-group">
+        <label class="custom-checkbox">
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+            <span class="label-text">Manter sessão por 7 dias</span>
+        </label>
+    </div>
+
+    <button type="submit" class="r-btn r-btn-primary enter-btn" routerLink="../mfa">
+        Continuar
+    </button>
+</form>
