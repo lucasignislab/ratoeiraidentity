@@ -23,11 +23,16 @@
     }
 }
 
-/* Lang Selector */
+/* Lang Selector and Dropdown */
 .card-top-actions {
     display: flex;
     justify-content: flex-end;
     margin-bottom: var(--spacing-4);
+    position: relative;
+
+    .dropdown-wrapper {
+        position: relative;
+    }
 
     .lang-selector {
         background: transparent;
@@ -39,16 +44,75 @@
         gap: var(--spacing-1);
         cursor: pointer;
         font-size: var(--font-size-sm);
+        transition: all var(--transition-fast);
 
         &:hover {
             background-color: var(--color-bg-body);
+            border-color: var(--color-border-hover);
         }
 
         .icon-sm {
             width: 14px;
             height: 14px;
             color: var(--color-text-muted);
+            transition: transform var(--transition-fast);
+
+            &.rotate {
+                transform: rotate(180deg);
+            }
         }
+    }
+
+    .country-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        z-index: 50;
+        background-color: var(--color-bg-card);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        list-style: none;
+        padding: var(--spacing-1) 0;
+        min-width: 160px;
+        animation: slideDown 0.2s ease-out;
+
+        li {
+            padding: var(--spacing-2) var(--spacing-3);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-main);
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+
+            &:hover {
+                background-color: var(--color-bg-body);
+            }
+
+            &.active {
+                background-color: #F0F9FF;
+                color: var(--color-primary);
+                font-weight: 500;
+            }
+
+            .flag {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

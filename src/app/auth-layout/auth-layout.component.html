@@ -4,14 +4,25 @@
 
     <!-- Top actions (Language Selector) -->
     <div class="card-top-actions">
-      <button class="lang-selector">
-        <span class="flag">🇧🇷</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icon-sm">
-          <path fill-rule="evenodd"
-            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-            clip-rule="evenodd" />
-        </svg>
-      </button>
+      <div class="dropdown-wrapper">
+        <button class="lang-selector" (click)="toggleDropdown()">
+          <span class="flag">{{ selectedCountry.flag }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icon-sm"
+            [class.rotate]="isDropdownOpen">
+            <path fill-rule="evenodd"
+              d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <ul class="country-dropdown" *ngIf="isDropdownOpen">
+          <li *ngFor="let country of countries" (click)="selectCountry(country)"
+            [class.active]="country.name === selectedCountry.name">
+            <span class="flag">{{ country.flag }}</span>
+            <span class="name">{{ country.name }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- Header / Brand -->

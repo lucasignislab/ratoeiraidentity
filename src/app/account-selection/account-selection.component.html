@@ -1,18 +1,24 @@
 <div class="view-header">
+    <button class="back-btn" routerLink="../login">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+    </button>
     <h1 class="view-title">Central de contas</h1>
     <p class="view-subtitle">Suas contas vinculadas ao acesso único</p>
 </div>
 
 <div class="accounts-grid">
     <!-- Mock Active Account 1 (Pages) -->
-    <button class="account-item active">
+    <button class="account-item" [class.active]="selectedAccountId === 'pages'" (click)="selectAccount('pages')">
         <div class="acc-logo pages-logo">
             <img src="mascotepages.png" alt="Pages Logo" class="acc-logo-img">
         </div>
     </button>
 
     <!-- Mock Active Account 2 (Ads) -->
-    <button class="account-item">
+    <button class="account-item" [class.active]="selectedAccountId === 'ads'" (click)="selectAccount('ads')">
         <div class="acc-logo ads-logo">
             <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Ads Logo" class="acc-logo-img">
         </div>
@@ -20,9 +26,9 @@
 </div>
 
 <div class="account-list-container">
-    <div class="account-row disabled">
-        <span class="acc-name">Pages</span>
-        <span class="badge-status">Inativo</span>
+    <div class="account-row">
+        <span class="acc-name">{{ selectedAccountName }}</span>
+        <span class="badge-status active">Ativo</span>
     </div>
 </div>
 

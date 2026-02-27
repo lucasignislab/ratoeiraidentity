@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-account-selection',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './account-selection.component.html',
   styleUrl: './account-selection.component.scss'
 })
 export class AccountSelectionComponent {
+  selectedAccountId: string = 'pages'; // Default to pages
 
+  selectAccount(accountId: string) {
+    this.selectedAccountId = accountId;
+  }
+
+  get selectedAccountName(): string {
+    return this.selectedAccountId === 'pages' ? 'Pages' : 'Ads';
+  }
 }
