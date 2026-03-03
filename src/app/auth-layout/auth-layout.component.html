@@ -1,77 +1,108 @@
 <div class="auth-wrapper">
 
-  <div class="r-card auth-card">
+  <div class="auth-card" [class.swapped-mode]="isSwapped">
 
-    <!-- Top actions (Language Selector) -->
-    <div class="card-top-actions">
-      <div class="dropdown-wrapper">
-        <button class="lang-selector" (click)="toggleDropdown()">
-          <span class="flag">{{ selectedCountry.flag }}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icon-sm"
-            [class.rotate]="isDropdownOpen">
-            <path fill-rule="evenodd"
-              d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd" />
-          </svg>
-        </button>
+    <!-- Full-bleed dashboard image for accounts view -->
+    <img *ngIf="isAccountsView" src="painel.png" alt="Dashboard" class="accounts-fullbleed-img">
 
-        <ul class="country-dropdown" *ngIf="isDropdownOpen">
-          <li *ngFor="let country of countries" (click)="selectCountry(country)"
-            [class.active]="country.name === selectedCountry.name">
-            <span class="flag">{{ country.flag }}</span>
-            <span class="name">{{ country.name }}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Header / Brand -->
-    <header class="auth-header">
-      <div class="brand">
-        <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Ratoeira Logo" class="brand-logo-img">
-        <div class="brand-text">
-          <span class="brand-name">Ratoeira</span>
-          <span class="brand-sub">Identity</span>
+
+    <div class="auth-container">
+      <!-- Forms Section (Login/Register via Router) -->
+      <div class="forms-container">
+
+        <!-- Top actions (Language Selector) -->
+        <div class="card-top-actions">
+          <div class="dropdown-wrapper">
+            <button class="lang-selector" (click)="toggleDropdown()">
+              <span class="flag">{{ selectedCountry.flag }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="icon-sm"
+                [class.rotate]="isDropdownOpen">
+                <path fill-rule="evenodd"
+                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+
+            <ul class="country-dropdown" *ngIf="isDropdownOpen">
+              <li *ngFor="let country of countries" (click)="selectCountry(country)"
+                [class.active]="country.name === selectedCountry.name">
+                <span class="flag">{{ country.flag }}</span>
+                <span class="name">{{ country.name }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="form-pane">
+          <div class="form-scroll-content">
+            <router-outlet></router-outlet>
+          </div>
+
+          <!-- Global Footer moved inside the form pane -->
+          <footer class="auth-footer">
+            <div class="security-badges">
+              <span class="badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="var(--color-accent)" class="icon">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+                Autenticação Segura
+              </span>
+              <span class="badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="var(--color-accent)" class="icon">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                </svg>
+                Protegido por criptografia
+              </span>
+            </div>
+
+            <div class="disclaimer">
+              <p>Seus dados são protegidos conforme a LGPD. Ao continuar, você concorda com nossos</p>
+              <p><a href="#">Termos</a> &amp; <a href="#">Política de Privacidade</a>.</p>
+            </div>
+
+            <p class="copyright">&#64; Grupo Ratoeira. Todos os direitos reservados.</p>
+          </footer>
         </div>
       </div>
-      <p class="brand-tagline">Acesso centralizado aos seus produtos</p>
-    </header>
 
-    <!-- Main Content Area where views get injected -->
-    <main class="auth-content">
-      <router-outlet></router-outlet>
-    </main>
-
+      <!-- Sliding Overlay Panel -->
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <ng-container *ngIf="!isAccountsView">
+              <header class="auth-header-mini">
+                <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Logo" class="mini-logo">
+                <div class="brand-text">
+                  <span class="brand-name">Ratoeira</span>
+                  <span class="brand-sub">Identity</span>
+                </div>
+                <h2 class="overlay-title">Bem-vindo de volta!</h2>
+              </header>
+              <p class="overlay-text">Para se manter conectado conosco, por favor faça o login com suas informações
+                pessoais.</p>
+              <button class="r-btn r-btn-ghost ghost-white" (click)="toggleAuthMode()">Entrar</button>
+            </ng-container>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <header class="auth-header-mini">
+              <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Logo" class="mini-logo">
+              <div class="brand-text">
+                <span class="brand-name">Ratoeira</span>
+                <span class="brand-sub">Identity</span>
+              </div>
+              <h2 class="overlay-title">Olá, Amigo!</h2>
+            </header>
+            <p class="overlay-text">Insira seus dados pessoais e comece sua jornada conosco hoje mesmo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="vertical-divider"></div>
+    </div>
   </div>
-
-  <!-- Global Footer -->
-  <footer class="auth-footer">
-    <div class="security-badges">
-      <span class="badge">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="var(--color-accent)" class="icon">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-        </svg>
-        Autenticação Segura
-      </span>
-      <span class="badge">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="var(--color-accent)" class="icon">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
-        </svg>
-        Protegido por criptografia
-      </span>
-    </div>
-
-    <div class="disclaimer">
-      <p>Seus dados são protegidos conforme a LGPD. Ao continuar, você concorda com nossos</p>
-      <p><a href="#">Termos</a> &amp; <a href="#">Política de Privacidade</a>.</p>
-    </div>
-
-    <p class="copyright">&#64; Grupo Ratoeira. Todos os direitos reservados.</p>
-    <a routerLink="/design-system" class="ds-link">🎨 Design System</a>
-  </footer>
 
 </div>

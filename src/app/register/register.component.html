@@ -1,0 +1,55 @@
+<div class="view-header">
+    <h1 class="view-title">Crie sua conta</h1>
+    <p class="view-subtitle">Junte-se à maior plataforma de anúncios de nicho</p>
+</div>
+
+<form class="register-form">
+    <div class="r-input-group">
+        <label for="name">Nome Completo</label>
+        <input type="text" id="name" class="r-input" placeholder="Seu Nome" autocomplete="name" />
+    </div>
+
+    <div class="r-input-group">
+        <label for="reg-email">E-mail</label>
+        <input type="email" id="reg-email" class="r-input" placeholder="seu@email.com" autocomplete="email" />
+    </div>
+
+    <div class="r-input-group">
+        <label for="reg-password">Senha</label>
+        <div class="password-wrapper">
+            <input [type]="isPasswordVisible ? 'text' : 'password'" id="reg-password" class="r-input"
+                placeholder="••••••••" autocomplete="new-password" />
+            <button type="button" class="view-pwd-btn" (click)="togglePasswordVisibility()">
+                <!-- Eye Icon (Visible) -->
+                <svg *ngIf="!isPasswordVisible" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                    <path fill-rule="evenodd"
+                        d="M.664 10.59a1.651 1.651 0 0 1 0-1.186A10.004 10.004 0 0 1 10 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0 1 10 17c-4.257 0-7.893-2.66-9.336-6.41ZM14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                        clip-rule="evenodd" />
+                </svg>
+                <!-- Eye Slash Icon (Hidden) -->
+                <svg *ngIf="isPasswordVisible" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M3.28 2.22a.75.75 0 00-1.06 1.06l14.5 14.5a.75.75 0 101.06-1.06l-1.745-1.745a10.029 10.029 0 003.3-6.41 1.651 1.651 0 000-1.186A10.004 10.004 0 0010 3a10.03 10.03 0 00-4.743 1.177L3.28 2.22zm2.721 2.721L7.49 6.43a4 4 0 015.08 5.08l1.43 1.43c.967-1.157 1.666-2.524 2.01-3.95a1.651 1.651 0 000-1.186A10.004 10.004 0 0010 3a9.965 9.965 0 00-4.032 1.942zM10.83 14.51l-.531-.531a2.5 2.5 0 01-3.289-3.29l-.53-.53a4 4 0 005.105 5.105l-.755-.754z"
+                        clip-rule="evenodd" />
+                    <path
+                        d="M5.503 16.503l-1.549-1.549A9.984 9.984 0 011.664 10.59a1.651 1.651 0 010-1.186 9.968 9.968 0 013.202-4.102l1.637 1.637a4.002 4.002 0 005.105 5.105l1.637 1.637a9.968 9.968 0 01-4.102 3.202 1.651 1.651 0 01-1.186 0 9.984 9.984 0 01-1.454-.567z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <button type="submit" class="r-btn r-btn-primary register-btn">
+        Cadastrar
+    </button>
+</form>
+
+<div class="divider">
+    <span>ou</span>
+</div>
+
+<div class="login-prompt">
+    <p class="prompt-text">Já tem uma conta? <a href="#" (click)="$event.preventDefault()">Entre aqui</a></p>
+</div>
