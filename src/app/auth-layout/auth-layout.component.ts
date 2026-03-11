@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
@@ -15,11 +15,13 @@ interface Country {
   templateUrl: './auth-layout.component.html',
   styleUrl: './auth-layout.component.scss'
 })
-export class AuthLayoutComponent implements OnInit {
+export class AuthLayoutComponent implements OnInit, AfterViewInit {
+  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
   isDropdownOpen = false;
   isSignUpMode = false;
   isSwapped = false;
   isAccountsView = false;
+  videoEnded = false;
 
   countries: Country[] = [
     { name: 'Brasil', flag: '🇧🇷' },
@@ -45,6 +47,14 @@ export class AuthLayoutComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    const video = this.bgVideo?.nativeElement;
+    if (video) {
+      video.muted = true;
+      video.play().catch(() => {});
+    }
+  }
+
   private updateMode(url: string) {
     this.isSignUpMode = url.includes('/register');
     this.isSwapped = url.includes('/register') || url.includes('/accounts');
@@ -53,6 +63,20 @@ export class AuthLayoutComponent implements OnInit {
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  onVideoEnded() {
+    this.videoEnded = true;
+
+    // After 5 seconds, restart the loop
+    setTimeout(() => {
+      this.videoEnded = false;
+      const video = this.bgVideo?.nativeElement;
+      if (video) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      }
+    }, 5000);
   }
 
   selectCountry(country: Country) {

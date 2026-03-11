@@ -79,12 +79,42 @@ $info-w: 65vw;
     z-index: 100;
 }
 
+.animation-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background-color: transparent;
+    overflow: hidden;
+
+    video,
+    iframe,
+    lottie-player {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.9s ease;
+    }
+
+    /* Pós-vídeo: background branco com fade-in suave */
+    &.video-done {
+        animation: bgFadeInWhite 0.9s ease forwards;
+
+        video {
+            opacity: 0;
+        }
+    }
+}
+
 .auth-card.swapped-mode .overlay-container {
     transform: translateX(-$form-w);
 }
 
 .overlay {
-    background-color: var(--color-bg-card);
+    background-color: transparent; /* Made transparent to show animation-bg */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -95,6 +125,7 @@ $info-w: 65vw;
     width: 200%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
+    z-index: 1; /* Above animation-bg */
 }
 
 .auth-card.swapped-mode .overlay {
@@ -199,6 +230,33 @@ $info-w: 65vw;
         background-color: rgba(255, 255, 255, 0.1) !important;
     }
 }
+
+/* Sobrepõe cores quando o fundo é branco (pós-vídeo) */
+.overlay.video-done {
+    color: #111111;
+
+    .overlay-title {
+        color: #111111;
+    }
+
+    .overlay-text {
+        color: #444444;
+    }
+
+    .brand-text .brand-name {
+        color: #111111;
+    }
+
+    .ghost-white {
+        border-color: #111111 !important;
+        color: #111111 !important;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.07) !important;
+        }
+    }
+}
+
 
 .vertical-divider {
     position: absolute;
@@ -328,6 +386,83 @@ $info-w: 65vw;
 @keyframes fadeIn {
     to {
         opacity: 1;
+    }
+}
+
+/* ==============================================
+   Overlay Content Stagger Animations (pós-vídeo)
+   ============================================== */
+
+/* Estado inicial: elementos invisíveis, deslocados para baixo */
+.anim-logo,
+.anim-brand,
+.anim-title,
+.anim-text,
+.anim-btn {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: none;
+}
+
+/* Quando content-revealed é adicionado ao pai, os filhos animam com stagger */
+.content-revealed .anim-logo {
+    animation: overlayItemIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+}
+
+.content-revealed .anim-brand {
+    animation: overlayItemIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s forwards;
+}
+
+.content-revealed .anim-title {
+    animation: overlayItemIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.42s forwards;
+}
+
+/* Para elementos com content-revealed diretamente (p, button) */
+.anim-text.content-revealed {
+    animation: overlayItemIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+}
+
+.anim-btn.content-revealed {
+    animation: overlayItemIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.78s forwards;
+}
+
+@keyframes overlayItemIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Background branco pós-vídeo */
+@keyframes bgFadeInWhite {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: #ffffff;
+    }
+}
+
+/* Acessibilidade: reduz motion */
+@media (prefers-reduced-motion: reduce) {
+    .anim-logo,
+    .anim-brand,
+    .anim-title,
+    .anim-text,
+    .anim-btn {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+        transition: none;
+    }
+
+    .animation-bg.video-done {
+        animation: none;
+        background-color: #ffffff;
     }
 }
 

@@ -71,33 +71,40 @@
       </div>
 
       <!-- Sliding Overlay Panel -->
-      <div class="overlay-container">
-        <div class="overlay">
+      <div class="overlay-container" [class.video-done]="videoEnded">
+        <!-- Main Animation Container for the 65vw area -->
+        <div class="animation-bg" [class.video-done]="videoEnded">
+          <video #bgVideo autoplay muted playsinline (ended)="onVideoEnded()">
+            <source src="video1.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="overlay" [class.video-done]="videoEnded">
           <div class="overlay-panel overlay-left">
             <ng-container *ngIf="!isAccountsView">
-              <header class="auth-header-mini">
-                <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Logo" class="mini-logo">
-                <div class="brand-text">
+              <header class="auth-header-mini" [class.content-revealed]="videoEnded">
+                <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Logo" class="mini-logo anim-logo">
+                <div class="brand-text anim-brand">
                   <span class="brand-name">Ratoeira</span>
                   <span class="brand-sub">Identity</span>
                 </div>
-                <h2 class="overlay-title">Bem-vindo de volta!</h2>
+                <h2 class="overlay-title anim-title">Bem-vindo de volta!</h2>
               </header>
-              <p class="overlay-text">Para se manter conectado conosco, por favor faça o login com suas informações
+              <p class="overlay-text anim-text" [class.content-revealed]="videoEnded">Para se manter conectado conosco, por favor faça o login com suas informações
                 pessoais.</p>
-              <button class="r-btn r-btn-ghost ghost-white" (click)="toggleAuthMode()">Entrar</button>
+              <button class="r-btn r-btn-ghost ghost-white anim-btn" [class.content-revealed]="videoEnded" (click)="toggleAuthMode()">Entrar</button>
             </ng-container>
           </div>
           <div class="overlay-panel overlay-right">
-            <header class="auth-header-mini">
-              <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Logo" class="mini-logo">
-              <div class="brand-text">
+            <header class="auth-header-mini" [class.content-revealed]="videoEnded">
+              <img src="MASCOTE SEM FUNDO AMARELO.png" alt="Logo" class="mini-logo anim-logo">
+              <div class="brand-text anim-brand">
                 <span class="brand-name">Ratoeira</span>
                 <span class="brand-sub">Identity</span>
               </div>
-              <h2 class="overlay-title">Olá, Amigo!</h2>
+              <h2 class="overlay-title anim-title">Olá, Amigo!</h2>
             </header>
-            <p class="overlay-text">Insira seus dados pessoais e comece sua jornada conosco hoje mesmo.</p>
+            <p class="overlay-text anim-text" [class.content-revealed]="videoEnded">Insira seus dados pessoais e comece sua jornada conosco hoje mesmo.</p>
           </div>
         </div>
       </div>
